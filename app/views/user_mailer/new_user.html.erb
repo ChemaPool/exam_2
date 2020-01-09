@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style type="text/css">
+      body{
+        font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      }
+
+      .flex-container, .flex-container-body, #flex-button,
+      .flex-center, #flex-body, .container-images,
+      .container {
+        display: flex;
+        justify-content: center;
+      }
+
+      .flex-container-body {
+        margin: 0px 200px;
+      }
+
+      .container-head-image-left {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container-head-image-right {
+        padding: 1em 0 1em 0;
+      }
+
+      #text-title {
+        color: #666;
+        font-size: 20px;
+      }
+
+      #text-body {
+        color:  grey;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        line-height: 25px;
+        font-weight: 600;
+        font-size: 14px;
+        margin: 0px 180px;
+      }
+
+      #link-google {
+        color: #8D7AFF;
+      }
+
+      .btn-register {
+        font-weight: bold;
+        border-radius: 3px;
+        text-align: center;
+        font-size: 16px;
+        color: #8D7AFF;
+        text-decoration: none;
+        border-color: #8D7AFF;
+        border-width: 1px;
+        border-style: solid;
+        padding: .7em 1em .7em 1em;
+        width: 50%;
+      }
+
+      #flex-button {
+        padding: 1em;
+        margin: 0px 150px;
+      }
+
+      #text-rent-homie {
+        font-weight: bold;
+        color:  grey;
+        font-size: 14px;
+      }
+
+      .text-footer {
+        font-weight: bold;
+        color:  grey;
+        font-size: 16px;
+        text-align: center;
+        padding-top: 1.5em;
+      }
+
+      img {
+        display: block;
+        margin: auto;
+      }
+
+      .img-bottom {
+        width: 150px;
+      }
+
+      .container-images-columns {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      .responsive-image {
+        max-width: 100%;
+      }
+
+      .cell img {
+        display: block;
+        padding: 0em 2em;
+      }
+
+      @media screen and (min-width: 600px) {
+        .grid {
+          display: flex;
+          flex-wrap: wrap;
+          flex-direction: row;
+        }
+
+        .cell {
+          width: 50%;
+        }
+      }
+
+      @media screen and (min-width: 1000px) {
+        .cell {
+          width: calc(100% / 3);
+        }
+      }
+
+      .cell {
+        margin: 1rem;
+      }
+
+      @media screen and (min-width: 600px) {
+        .cell {
+          width: calc(50% - 2rem);
+        }
+      }
+
+      @media screen and (min-width: 1000px) {
+        .cell {
+          width: calc(33.3333% - 2rem);
+        }
+      }
+
+      .container-image-center {
+        display: flex;
+        justify-content: center;
+      }
+
+      .image-list-public {
+        margin: 10px 10px;
+      }
+      
+    </style>
+    <title>Registro</title>
+  </head>
+  <body>
+
+    <div class="flex-container">
+      <div class="flex-container-head">
+        <div class="container-head-image-left">
+          <%= image_tag 'email/homie', class: "image-head" %>
+        </div>
+        <div class="container-head-image-right">
+          <%= image_tag 'email/ribbon', class: "image-head" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex-container-body">
+      <div class="flexbox-container">
+        <div class="container-images-columns">
+
+          <div class="flex-center">
+              <p id="text-title">Hola Propietario Apellido,</p>
+          </div>
+          
+          <p id="text-body">
+            <span>¿Recuerdas el registro que iniciaste para poner en renta tu propiedad con nosotros?</span>
+            <span><a id="link-google" href="https://www.google.com.mx" target="_black">Continúa el proceso</a> y disfruta de todo lo que te ofrecemos. En Homie queremos que rentes tu inmueble en el menor tiempo posible, por ello también publicamos tu anuncio en:</span>
+          </p>
+
+          <div class="container-images-list">
+
+            <div class="container-image-center">
+              <div>
+                <%= image_tag 'email/lamudi', class: "image-list-public" %>
+              </div>
+              <div>
+                <%= image_tag 'email/metros_3', class: "image-list-public" %>
+              </div>
+            </div>
+
+            <div class="container-image-center">
+              <div>
+                <%= image_tag 'email/inmuebles_24', class: "image-list-public" %>
+              </div>
+              <div>
+                <%= image_tag 'email/craigslist', class: "image-list-public" %>
+              </div>
+            </div>
+
+            <div class="container-image-center">
+              <div>
+                <%= image_tag 'email/goplaceit', class: "image-list-public" %>
+              </div>
+              <div>
+                <%= image_tag 'email/propiedades', class: "image-list-public" %>
+              </div>
+              <div>
+                <%= image_tag 'email/mercadolibre', class: "image-list-public" %>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex-center">
+              <p id="text-rent-homie" style="text-align: center;">
+              <span>así como en anuncios destacados dentro de Facebook y Google,</span> <br>
+              <span>todo esto sin costo y sin pedirte exclusividad. ¡No dejes pasar la oportunidad!</span>
+              </p>
+          </div>
+
+          <div id="flex-button">
+            <a class="btn-register" href="#" >Continua tu registro ahora</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
