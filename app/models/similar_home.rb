@@ -1,31 +1,43 @@
 class SimilarHome
   include Mongoid::Document
 
-  private
-
-  def self.match_owner_home
+  def self.owner_home
     owners_id = Owner.pluck(:id)
-    owner_home = []
+    homes = []
 
     owners_id.each do |id|
-      owner = Owner.find(id)
-      owner_home = Home.where(owner_id: id).pluck(:id)
+      owner = Owner.includes(:homes).find(id)
+      homes = owner.homes
+      next if homes.length == 1
 
-      next if owner_home.length == 1
+      homes_size = homes.size
+      homes.map do |home|
+        #next if index + 1 < homes_size
 
-      owner_home.each_with_index do |home, index|
-        if index + 1 < owner_home.length
+        # if index + 1 < homes_size # guard clause
 
-          firts_home = Home.find(id: home)
-          next if firts_home.master_home_id != nil
-          next unless firts_home.published?
+          current_home = Home.find_by(id: home)
+          if current_home.master_home_id.nil? && current_home.published?
+            # next_home = homes[index + 1]
+            second_home = Home.find(homes)
+            first_total_amount = current_home.total_amount
+            second_total_amount = second_home.total_amount
+            first_location = current_home.location
+            second_location = second_home.location
 
-          next_home = owner_home[index + 1]
-          second_home = Home.find(id: next_home)
-          if firts_home.total_amount == second_home.total_amount && firts_home.location == second_home.location
-            puts "#{owner.user.name}, #{owner.user.email}, #{firts_home.id}, #{firts_home.total_amount}, #{firts_home.status}, #{firts_home.location}"
+            if first_total_amount == second_total_amount && first_location == second_location
+              puts  "#{owner.user.name}, " \
+                    "#{owner.user.email}, " \
+                    "#{current_home.id}, " \
+                    "#{current_home.total_amount}, " \
+                    "#{current_home.status}, " \
+                    "#{current_home.location}"
+            end
+
           end
-        end
+
+        # end
+
       end
     end
   end

@@ -12,7 +12,7 @@ class Home
   field :extra_service, type: Float
   field :master_home_id, type: String
   field :home_features, type: Hash, default: { garden: false, furnished: false, gym: false }
-  enum :status, %i[in_progress published rented]
+  enum :status, [:in_progress, :published, :rented]
 
   has_many :rents
   belongs_to :owner

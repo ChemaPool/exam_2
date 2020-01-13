@@ -2,20 +2,20 @@ namespace :rails_task do
   desc 'Generate Home'
   task task_generate: :environment do
     user = User.find_or_create_by!(
-      email: 'homie@homie.com',
-      name: 'prueba',
-      last_name: 'prueba',
-      mobile_phone: '9911028395',
-      work_place: 'HomieMxMerida'
+      email: 'Hola@holi.com',
+      name: 'Hola',
+      last_name: 'Holi',
+      mobile_phone: '9911028356',
+      work_place: 'HomieMxMeridaHoli'
     )
-    owner = Owner.find_or_create_by!(user: user, curp: '784123000MXM', registered_in_srpago: true)
+    owner = Owner.find_or_create_by!(user: user, curp: 'Holi784123000MXM', registered_in_srpago: true)
     Home.create!(
       owner: owner,
-      price: 11.5,
+      price: 20.5,
       extra_service: 55.12,
       home_features: { garden: false, furnished: true, gym: false },
       master_home_id: nil,
-      location: [-99.2385, 19.3366]
+      location: [-99.2385, 20.3366]
     )
   end
 end
